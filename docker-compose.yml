@@ -81,7 +81,8 @@ x-snuba-defaults: &snuba_defaults
   image: "$SNUBA_IMAGE"
   environment:
     SNUBA_SETTINGS: docker
-    CLICKHOUSE_HOST: clickhouse
+    CLICKHOUSE_HOST: 'sentry-haproxy-vip.test.cloud.croc-vol.goods.local'
+    CLICKHOUSE_PORT: '9000'
     DEFAULT_BROKERS: 'sentry-datasource-node-01.test.cloud.croc-vol.goods.local:9092,sentry-datasource-node-02.test.cloud.croc-vol.goods.local:9092,sentry-datasource-node-03.test.cloud.croc-vol.goods.local:9092'
     REDIS_HOST: 'sentry-haproxy-vip.test.cloud.croc-vol.goods.local'
     UWSGI_MAX_REQUESTS: "10000"
@@ -184,34 +185,34 @@ services:
 #    healthcheck:
 #      <<: *healthcheck_defaults
 #      test: ["CMD-SHELL", "nc -z localhost 9092"]
-  clickhouse:
-    <<: *restart_policy
-    image: "yandex/clickhouse-server:20.3.9.70"
-    ulimits:
-      nofile:
-        soft: 262144
-        hard: 262144
-    volumes:
-      - "sentry-clickhouse:/var/lib/clickhouse"
-      - "sentry-clickhouse-log:/var/log/clickhouse-server"
-      - type: bind
-        read_only: true
-        source: ./clickhouse/config.xml
-        target: /etc/clickhouse-server/config.d/sentry.xml
-    environment:
-      # This limits Clickhouse's memory to 30% of the host memory
-      # If you have high volume and your search return incomplete results
-      # You might want to change this to a higher value (and ensure your host has enough memory)
-      MAX_MEMORY_USAGE_RATIO: 0.3
-    healthcheck:
-      test:
-        [
-          "CMD-SHELL",
-          "wget -nv -t1 --spider 'http://localhost:8123/' || exit 1",
-        ]
-      interval: 3s
-      timeout: 600s
-      retries: 200
+#  clickhouse:
+#    <<: *restart_policy
+#    image: "yandex/clickhouse-server:20.3.9.70"
+#    ulimits:
+#      nofile:
+#        soft: 262144
+#        hard: 262144
+#    volumes:
+#      - "sentry-clickhouse:/var/lib/clickhouse"
+#      - "sentry-clickhouse-log:/var/log/clickhouse-server"
+#      - type: bind
+#        read_only: true
+#        source: ./clickhouse/config.xml
+#        target: /etc/clickhouse-server/config.d/sentry.xml
+#    environment:
+#      # This limits Clickhouse's memory to 30% of the host memory
+#      # If you have high volume and your search return incomplete results
+#      # You might want to change this to a higher value (and ensure your host has enough memory)
+#      MAX_MEMORY_USAGE_RATIO: 0.3
+#    healthcheck:
+#      test:
+#        [
+#          "CMD-SHELL",
+#          "wget -nv -t1 --spider 'http://localhost:8123/' || exit 1",
+#        ]
+#      interval: 3s
+#      timeout: 600s
+#      retries: 200
   geoipupdate:
     image: "maxmindinc/geoipupdate:v4.7.1"
     # Override the entrypoint in order to avoid using envvars for config.
