@@ -352,8 +352,8 @@ services:
     depends_on:
       kafka:
         <<: *depends_on-healthy
-      redis:
-        <<: *depends_on-healthy
+#      redis:
+#        <<: *depends_on-healthy
       web:
         <<: *depends_on-healthy
 volumes:
