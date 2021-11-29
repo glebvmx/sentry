@@ -113,7 +113,7 @@ CACHES = {
 SENTRY_CACHE = "sentry.cache.redis.RedisCache"
 
 DEFAULT_KAFKA_OPTIONS = {
-    "bootstrap.servers": "kafka:9092",
+    "bootstrap.servers": "sentry-datasource-node-01.test.cloud.croc-vol.goods.local:9092,sentry-datasource-node-02.test.cloud.croc-vol.goods.local:9092,sentry-datasource-node-03.test.cloud.croc-vol.goods.local:9092",
     "message.max.bytes": 50000000,
     "socket.timeout.ms": 1000,
 }

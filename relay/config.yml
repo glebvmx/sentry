@@ -7,7 +7,7 @@ logging:
 processing:
   enabled: true
   kafka_config:
-    - {name: "bootstrap.servers", value: "kafka:9092"}
+    - {name: "bootstrap.servers", value: "sentry-datasource-node-01.test.cloud.croc-vol.goods.local:9092,sentry-datasource-node-02.test.cloud.croc-vol.goods.local:9092,sentry-datasource-node-03.test.cloud.croc-vol.goods.local:9092"}
     - {name: "message.max.bytes", value: 50000000} # 50MB
   redis: redis://sentry-haproxy-vip.test.cloud.croc-vol.goods.local:6379
   geoip_path: "/geoip/GeoLite2-City.mmdb"
