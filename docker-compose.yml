@@ -20,8 +20,8 @@ x-sentry-defaults: &sentry_defaults
   depends_on:
 #    redis:
 #      <<: *depends_on-healthy
-    kafka:
-      <<: *depends_on-healthy
+#    kafka:
+#      <<: *depends_on-healthy
 #    postgres:
 #      <<: *depends_on-healthy
     memcached:
@@ -74,8 +74,8 @@ x-snuba-defaults: &snuba_defaults
   depends_on:
     clickhouse:
       <<: *depends_on-healthy
-    kafka:
-      <<: *depends_on-healthy
+#    kafka:
+#      <<: *depends_on-healthy
 #    redis:
 #      <<: *depends_on-healthy
   image: "$SNUBA_IMAGE"
