@@ -18,8 +18,8 @@ x-sentry-defaults: &sentry_defaults
   <<: *restart_policy
   image: "$SENTRY_IMAGE"
   depends_on:
-    redis:
-      <<: *depends_on-healthy
+#    redis:
+#      <<: *depends_on-healthy
     kafka:
       <<: *depends_on-healthy
 #    postgres:
@@ -76,8 +76,8 @@ x-snuba-defaults: &snuba_defaults
       <<: *depends_on-healthy
     kafka:
       <<: *depends_on-healthy
-    redis:
-      <<: *depends_on-healthy
+#    redis:
+#      <<: *depends_on-healthy
   image: "$SNUBA_IMAGE"
   environment:
     SNUBA_SETTINGS: docker
@@ -104,18 +104,18 @@ services:
       <<: *healthcheck_defaults
       # From: https://stackoverflow.com/a/31877626/5155484
       test: echo stats | nc 127.0.0.1 11211
-  redis:
-    <<: *restart_policy
-    image: "redis:6.2.4-alpine"
-    healthcheck:
-      <<: *healthcheck_defaults
-      test: redis-cli ping
-    volumes:
-      - "sentry-redis:/data"
-    ulimits:
-      nofile:
-        soft: 10032
-        hard: 10032
+#  redis:
+#    <<: *restart_policy
+#    image: "redis:6.2.4-alpine"
+#    healthcheck:
+#      <<: *healthcheck_defaults
+#      test: redis-cli ping
+#    volumes:
+#      - "sentry-redis:/data"
+#    ulimits:
+#      nofile:
+#        soft: 10032
+#        hard: 10032
 #  postgres:
 #    <<: *restart_policy
 #    image: "postgres:9.6"
