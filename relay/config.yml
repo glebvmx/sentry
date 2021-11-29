@@ -9,5 +9,5 @@ processing:
   kafka_config:
     - {name: "bootstrap.servers", value: "kafka:9092"}
     - {name: "message.max.bytes", value: 50000000} # 50MB
-  redis: redis://redis:6379
+  redis: redis://sentry-haproxy-vip.test.cloud.croc-vol.goods.local:6379
   geoip_path: "/geoip/GeoLite2-City.mmdb"
