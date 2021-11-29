@@ -71,9 +71,9 @@ x-sentry-defaults: &sentry_defaults
     - "./certificates:/usr/local/share/ca-certificates:ro"
 x-snuba-defaults: &snuba_defaults
   <<: *restart_policy
-  depends_on:
-    snuba_api:
-      <<: *depends_on-healthy
+#  depends_on:
+#    snuba_api:
+#      <<: *depends_on-healthy
 #    kafka:
 #      <<: *depends_on-healthy
 #    redis:
