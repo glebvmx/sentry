@@ -83,7 +83,7 @@ x-snuba-defaults: &snuba_defaults
     SNUBA_SETTINGS: docker
     CLICKHOUSE_HOST: clickhouse
     DEFAULT_BROKERS: "kafka:9092"
-    REDIS_HOST: redis
+    REDIS_HOST: 'sentry-haproxy-vip.test.cloud.croc-vol.goods.local'
     UWSGI_MAX_REQUESTS: "10000"
     UWSGI_DISABLE_LOGGING: "true"
     # Leaving the value empty to just pass whatever is set
