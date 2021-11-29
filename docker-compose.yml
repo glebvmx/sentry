@@ -349,9 +349,9 @@ services:
         read_only: true
         source: ./geoip
         target: /geoip
-    depends_on:
-      kafka:
-        <<: *depends_on-healthy
+#    depends_on:
+#      kafka:
+#        <<: *depends_on-healthy
 #      redis:
 #        <<: *depends_on-healthy
       web:
