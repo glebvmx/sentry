@@ -32,18 +32,16 @@ def get_internal_network():
 
 INTERNAL_SYSTEM_IPS = (get_internal_network(),)
 
-
 DATABASES = {
     "default": {
         "ENGINE": "sentry.db.postgres",
-        "NAME": "postgres",
-        "USER": "postgres",
-        "PASSWORD": "",
-        "HOST": "postgres",
+        "NAME": "sentry",
+        "USER": "sentry",
+        "PASSWORD": "3CkpLrCVCKxwsFK",
+        "HOST": "sentry-haproxy-vip.test.cloud.croc-vol.goods.local",
         "PORT": "",
     }
 }
-
 # You should not change this setting after your database has been created
 # unless you have altered all schemas first
 SENTRY_USE_BIG_INTS = True
