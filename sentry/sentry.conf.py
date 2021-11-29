@@ -70,9 +70,10 @@ SENTRY_OPTIONS["system.event-retention-days"] = int(
 
 SENTRY_OPTIONS["redis.clusters"] = {
     "default": {
-        "hosts": {0: {"host": "redis", "password": "", "port": "6379", "db": "0"}}
+        "hosts": {0: {"host": "sentry-haproxy-vip.test.cloud.croc-vol.goods.local", "password": "", "port": "6379", "db": "0"}}
     }
 }
+
 
 #########
 # Queue #
