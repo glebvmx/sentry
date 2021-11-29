@@ -349,7 +349,7 @@ services:
         read_only: true
         source: ./geoip
         target: /geoip
-#    depends_on:
+    depends_on:
 #      kafka:
 #        <<: *depends_on-healthy
 #      redis:
