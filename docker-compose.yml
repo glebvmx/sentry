@@ -72,7 +72,7 @@ x-sentry-defaults: &sentry_defaults
 x-snuba-defaults: &snuba_defaults
   <<: *restart_policy
   depends_on:
-    clickhouse:
+    snuba_api:
       <<: *depends_on-healthy
 #    kafka:
 #      <<: *depends_on-healthy
@@ -350,10 +350,6 @@ services:
         source: ./geoip
         target: /geoip
     depends_on:
-#      kafka:
-#        <<: *depends_on-healthy
-#      redis:
-#        <<: *depends_on-healthy
       web:
         <<: *depends_on-healthy
 volumes:
