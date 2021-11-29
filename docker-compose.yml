@@ -81,7 +81,7 @@ x-snuba-defaults: &snuba_defaults
   image: "$SNUBA_IMAGE"
   environment:
     SNUBA_SETTINGS: docker
-    CLICKHOUSE_HOST: 'sentry-haproxy-vip.test.cloud.croc-vol.goods.local'
+    CLICKHOUSE_HOST: 'sentry-datasource-node-01.test.cloud.croc-vol.goods.local'
     CLICKHOUSE_PORT: '9000'
     DEFAULT_BROKERS: 'sentry-datasource-node-01.test.cloud.croc-vol.goods.local:9092,sentry-datasource-node-02.test.cloud.croc-vol.goods.local:9092,sentry-datasource-node-03.test.cloud.croc-vol.goods.local:9092'
     REDIS_HOST: 'sentry-haproxy-vip.test.cloud.croc-vol.goods.local'
